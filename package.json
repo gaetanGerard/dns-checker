@@ -2,24 +2,35 @@
   "name": "dns-checker",
   "version": "0.1.0",
   "private": true,
+  "main": "main.ts",
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "electron": "concurrently \"npm run dev\" \"npm run compile-electron && wait-on http://localhost:3000 && electron dist/main.js\"",
+    "compile-electron": "tsc -p tsconfig.electron.json"
   },
   "dependencies": {
+    "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.2"
+    "sass": "^1.87.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@types/electron": "^1.6.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "concurrently": "^9.1.2",
+    "electron": "^36.2.0",
+    "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
-    "@eslint/eslintrc": "^3"
+    "eslint-plugin-next": "^0.0.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "typescript": "^5",
+    "wait-on": "^8.0.3"
   }
 }
