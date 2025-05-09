@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
+import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
 import Header from "@/components/Header/Header";
 import "@/sass/styles.scss";
 
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <ErrorBoundary>{children}</ErrorBoundary>
+        <ThemeWrapper>
+          <Header />
+          <ErrorBoundary>{children}</ErrorBoundary>
+        </ThemeWrapper>
       </body>
     </html>
   );
