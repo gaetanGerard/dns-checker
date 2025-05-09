@@ -6,7 +6,7 @@ const createTable = (): void => {
     CREATE TABLE IF NOT EXISTS profiles (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      subdomains TEXT NOT NULL
+      domains TEXT NOT NULL
     );
   `;
   db.run(query, (err) => {
@@ -18,11 +18,11 @@ const createTable = (): void => {
   });
 };
 
-const addProfile = (name: string, subdomains: string[]): void => {
-  const subdomainsStr = subdomains.join(", ");
-  const query = `INSERT INTO profiles (name, subdomains) VALUES (?, ?)`;
+const addProfile = (name: string, domains: string[]): void => {
+  const domainsStr = domains.join(", ");
+  const query = `INSERT INTO profiles (name, domains) VALUES (?, ?)`;
 
-  db.run(query, [name, subdomainsStr], function (err) {
+  db.run(query, [name, domainsStr], function (err) {
     if (err) {
       console.error("Error adding profile", err.message);
     } else {
@@ -56,6 +56,18 @@ const deleteProfile = (id: number): void => {
   });
 };
 
+const updateProfile = (id: number, name: string, domains: string[]): void => {
+  const domainsStr = domains.join(", ");
+  const query = `UPDATE profiles SET name = ?, domains = ? WHERE id = ?`;
+  db.run(query, [name, domainsStr, id], function (err) {
+    if (err) {
+      console.error("Error updating profile", err.message);
+    } else {
+      console.log(`Profile with ID: ${id} updated.`);
+    }
+  });
+};
+
 createTable();
 
-export { addProfile, getProfiles, deleteProfile };
+export { addProfile, getProfiles, deleteProfile, updateProfile };

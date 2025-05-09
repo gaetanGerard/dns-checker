@@ -36,10 +36,10 @@ $error-color: #dc3545;
 $header-dark: color.adjust($background-dark, $blackness: 15%);
 
 // Color for borders status message
-$warning-border: lighten($warning-color, 20%);
-$info-border: lighten($info-color, 20%);
-$success-border: lighten($success-color, 20%);
-$error-border: lighten($error-color, 20%);
+$warning-border: color.adjust($warning-color, $lightness: 20%);
+$info-border: color.adjust($info-color, $lightness: 20%);
+$success-border: color.adjust($success-color, $lightness: 20%);
+$error-border: color.adjust($error-color, $lightness: 20%);
 
 // Background colors for status messages
 $warning-background: rgba(255, 165, 0, 0.1);
