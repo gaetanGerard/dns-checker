@@ -1,4 +1,8 @@
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import { app, BrowserWindow, Menu, MenuItem } from "electron";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 let win: BrowserWindow | null = null;
 
@@ -9,6 +13,7 @@ function createWindow() {
     webPreferences: {
       contextIsolation: true,
     },
+    icon: __dirname + "/../public/assets/icons/dns.ico",
   });
 
   win.loadURL("http://localhost:3000");
