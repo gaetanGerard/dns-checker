@@ -1,7 +1,9 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu, MenuItem } from "electron";
+
+let win: BrowserWindow | null = null;
 
 function createWindow() {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1024,
     height: 768,
     webPreferences: {
@@ -10,6 +12,24 @@ function createWindow() {
   });
 
   win.loadURL("http://localhost:3000");
+
+  const menu = Menu.getApplicationMenu() || Menu.buildFromTemplate([]);
+
+  const settingsMenu = {
+    label: "Settings",
+    submenu: [
+      {
+        label: "Preferences",
+        click: () => {
+          win?.loadURL("http://localhost:3000/settings/preferences");
+        },
+      },
+    ],
+  };
+
+  menu.append(new MenuItem(settingsMenu));
+
+  Menu.setApplicationMenu(menu);
 }
 
 app.whenReady().then(createWindow);

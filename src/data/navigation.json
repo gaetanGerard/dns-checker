@@ -1,0 +1,10 @@
+[
+  {
+    "href": "/home",
+    "label": "Accueil"
+  },
+  {
+    "href": "/profiles",
+    "label": "Profiles"
+  }
+]

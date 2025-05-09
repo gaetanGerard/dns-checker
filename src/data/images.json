@@ -1,0 +1,9 @@
+{
+  "logo": {
+    "src": "/assets/logo/dns.png",
+    "alt": "DNS Logo",
+    "width": 100,
+    "height": 40,
+    "href": "/"
+  }
+}

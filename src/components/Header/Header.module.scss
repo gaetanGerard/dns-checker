@@ -1,0 +1,7 @@
+@use "@/sass/abstracts" as *;
+
+.header {
+  @include flex-header();
+  background-color: $header-dark;
+  color: $text-light;
+}

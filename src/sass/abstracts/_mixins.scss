@@ -1,3 +1,11 @@
+@use "./variables.scss" as *;
 /*--------------------------------------------------------------
 # Mixins
 --------------------------------------------------------------*/
+
+@mixin flex-header($padding-y: $padding-sm, $padding-x: $padding-lg) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $padding-y $padding-x;
+}
