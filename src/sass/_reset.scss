@@ -1,0 +1,90 @@
+/* reset.scss */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #333;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid #ccc;
+  padding: 8px;
+  background-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+hr {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+inline-block {
+  margin: 0;
+}
+
+select,
+textarea {
+  appearance: none;
+}

@@ -1,0 +1,9 @@
+/*--------------------------------------------------------------
+# Main SCSS file for the project
+# This file centralizes the import of all other SCSS files
+# Nothing should be added here as its should only use to serve as an
+# "css endpoint" for all files
+--------------------------------------------------------------*/
+
+@use "reset";
+@use "index" as *;

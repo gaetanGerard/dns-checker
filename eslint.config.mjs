@@ -11,6 +11,17 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "Literal[raw=/[^&]']/",
+          message: "L'apostrophe doit être échappée avec &apos; ou &#39;.",
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;
