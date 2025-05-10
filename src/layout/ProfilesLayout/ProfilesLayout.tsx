@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useProfile } from "@/hooks/profile/useProfile";
 import styles from "./ProfilesLayout.module.scss";
 
+import Loading from "@/components/Loading/Loading";
+
 const ProfilesLayout = () => {
   const {
     profiles,
@@ -98,8 +100,8 @@ const ProfilesLayout = () => {
   return (
     <div className={styles.container}>
       <h1>Profiles</h1>
-      {loading ? (
-        <p>Chargement des profils...</p>
+      {!loading ? (
+        <Loading loadingText="Chargement des profils..." />
       ) : (
         <>
           {isFormVisible ? (
