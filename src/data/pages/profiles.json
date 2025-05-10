@@ -35,5 +35,6 @@
     "table": {
       "thead": ["Nom", "Domaine", "Actions"]
     }
-  }
+  },
+  "presentation": "Ajouter, modifier ou supprimer des profils à utiliser dans les tests."
 }

@@ -9,6 +9,7 @@ import Loading from "@/components/Loading/Loading";
 import Title from "@/components/ui/Title/Title";
 import AddEditProfileForm from "@/components/AddEditProfileForm/AddEditProfileForm";
 import ProfileList from "@/components/ProfilesList/ProfilesList";
+import Presentation from "@/components/ui/Presentation/Presentation";
 
 import data from "@/data/pages/profiles.json";
 import notificationsData from "@/data/notifications.json";
@@ -140,6 +141,11 @@ const ProfilesLayout = () => {
   return (
     <div className={styles.container}>
       <Title className="text-center">{data.pageTitle}</Title>
+      <Presentation
+        text={data.presentation}
+        className="profile-presentation"
+        align="center"
+      />
       {loading ? (
         <Loading loadingText={data.loadingText} />
       ) : (

@@ -1,0 +1,26 @@
+@use "@/sass/abstracts" as *;
+
+.presentation {
+  width: fit-content;
+  padding: $padding-lg $padding-xl;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  background-color: $background-light;
+  font-size: $font-pres;
+  line-height: 1.2;
+  font-weight: $font-medium;
+  color: $text-secondary;
+}
+
+.left {
+  @include text-align(left);
+}
+
+.right {
+  @include text-align(right);
+}
+
+.center {
+  @include text-align(center);
+  margin: 0 auto;
+}
