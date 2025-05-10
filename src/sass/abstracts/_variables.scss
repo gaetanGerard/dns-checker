@@ -8,23 +8,23 @@
 --------------------------------------------------------------*/
 
 // Main colors
-$primary-color: #f20519;
-$secondary-color: #d90452;
-$accent-color: #bf048d;
-
+$primary-color: #6267d9;
+$secondary-color: #389bf2;
+$accent-color: #854ad9;
 // Background colors
-$background-light: #f5e1e6;
-$background-dark: #370b3c;
+$background-light: #f4f6fc;
+$background-dark: #1f1b3a;
 
 // Text colors
-$text-main: #333333;
-$text-secondary: #8d8d8d;
+$text-main: #1e1e1e;
+$text-secondary: #5a5a5a;
 $text-light: #ffffff;
 $text-dark: #000000;
+$text-muted: #6c757d;
 
 // Accent colors
-$accent-light: #ffb6c1;
-$accent-dark: #9b0056;
+$accent-light: #d1c7f7;
+$accent-dark: #d61ed9;
 
 // Messages colors
 $warning-color: #ffa500;
@@ -32,8 +32,9 @@ $info-color: #17a2b8;
 $success-color: #28a745;
 $error-color: #dc3545;
 
-// Loading colors
-
+// Input colors
+$input-border-color: #ccc;
+$input-background-color: #fff;
 
 // Header colors
 $header-dark: color.adjust($background-dark, $blackness: 15%);
@@ -72,12 +73,23 @@ $font-lg: 1.5rem;
 $font-xl: 2rem;
 $font-2xl: 2.5rem;
 
+// Title font sizes
+$title-xs: 1.25rem;
+$title-sm: 1.5rem;
+$title-md: 1.75rem;
+$title-lg: 2rem;
+$title-xl: 2.5rem;
+$title-2xl: 3rem;
+$title-3xl: 3.5rem;
+$title-4xl: 4rem;
+
 /*--------------------------------------------------------------
 # Padding
 --------------------------------------------------------------*/
 
 $padding-xs: 0.25rem;
 $padding-sm: 0.5rem;
+$padding-btn: 0.75rem;
 $padding-md: 1rem;
 $padding-lg: 1.5rem;
 $padding-xl: 2rem;
@@ -89,8 +101,10 @@ $padding-xl: 2rem;
 $margin-xs: 0.25rem;
 $margin-sm: 0.5rem;
 $margin-md: 1rem;
-$margin-lg: 1.5rem;
-$margin-xl: 2rem;
+$margin-lg: 1.25rem;
+$margin-xl: 1.5rem;
+$margin-2xl: 2rem;
+$margin-auto: auto;
 
 /*--------------------------------------------------------------
 # Gap
@@ -101,3 +115,18 @@ $gap-sm: 0.5rem;
 $gap-md: 1rem;
 $gap-lg: 1.5rem;
 $gap-xl: 2rem;
+
+/*--------------------------------------------------------------
+# Border Radius
+--------------------------------------------------------------*/
+
+$border-radius-none: 0;
+$border-radius-xxs: 0.125rem;
+$border-radius-xs: 0.25rem;
+$border-radius-sm: 0.375rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.75rem;
+$border-radius-xl: 1rem;
+$border-radius-2xl: 1.5rem;
+$border-radius-3xl: 2rem;
+$border-radius-full: 9999px;

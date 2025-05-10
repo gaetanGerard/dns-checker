@@ -17,3 +17,19 @@
   align-items: $align-items;
   gap: $gap;
 }
+
+@mixin text-transform($text-transform: none) {
+  text-transform: $text-transform;
+}
+
+@mixin text-align($text-align: left) {
+  text-align: $text-align;
+}
+
+@mixin text-decoration($text-decoration: none) {
+  text-decoration: $text-decoration;
+}
+
+@mixin letter-spacing($letter-spacing: normal) {
+  letter-spacing: $letter-spacing;
+}

@@ -1,0 +1,11 @@
+@use "@/sass/abstracts" as *;
+
+.label {
+  font-weight: $font-semi-bold;
+  margin-bottom: $padding-sm;
+}
+
+.profile-label {
+  margin-bottom: $margin-md;
+  color: $primary-color;
+}

@@ -1,0 +1,33 @@
+{
+  "pageTitle": "Profiles",
+  "pageDescription": "Explore the profiles of various individuals.",
+  "loadingText": "Chargement en cours...",
+  "form": {
+    "title": {
+      "edit": "Éditer le profil",
+      "add": "Ajouter un profil"
+    },
+    "helper": {
+      "name": "Le nom du profil ne doit pas être vide.",
+      "domain": "Un domaine ne doit pas commencer par http(s), www ou inclure un sous-domaine."
+    },
+    "errors": {
+      "name": "Le nom est requis.",
+      "domain": "Le domaine est invalide."
+    },
+    "nameInput": {
+      "label": "Nom du profil",
+      "placeholder": "Entrez le nom du profil"
+    },
+    "domainInput": {
+      "label": "Domaine",
+      "placeholder": "domain.com"
+    },
+    "buttons": {
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "continue": "Ajouter et continuer",
+      "stop": "Ajouter et terminer"
+    }
+  }
+}

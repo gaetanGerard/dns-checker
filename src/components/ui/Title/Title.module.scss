@@ -1,0 +1,47 @@
+@use "@/sass/abstracts" as *;
+
+.h1 {
+  font-size: $title-3xl;
+  font-weight: $font-extra-bold;
+  margin-bottom: $padding-md;
+}
+
+.h2 {
+  font-size: $title-2xl;
+  font-weight: $font-bold;
+  margin-bottom: $padding-sm;
+}
+
+.h3 {
+  font-size: $title-xl;
+  font-weight: $font-semi-bold;
+  margin-bottom: $padding-xs;
+}
+
+.h4 {
+  font-size: $title-lg;
+  font-weight: $font-semi-bold;
+}
+
+.h5 {
+  font-size: $title-md;
+  font-weight: $font-medium;
+}
+
+.h6 {
+  font-size: $title-sm;
+  font-weight: $font-medium;
+  @include text-transform(uppercase);
+  @include letter-spacing(0.1em);
+}
+
+.profile-title {
+  margin-bottom: $margin-xl;
+  color: $primary-color;
+  font-size: $font-lg;
+  text-align: center;
+}
+
+.text-center {
+  @include text-align(center);
+}

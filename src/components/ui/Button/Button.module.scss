@@ -1,0 +1,53 @@
+@use "@/sass/abstracts" as *;
+@use "sass:color";
+
+.button {
+  padding: $padding-btn $padding-lg;
+  border: none;
+  border-radius: $border-radius-sm;
+  font-size: $font-md;
+  font-weight: $font-medium;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  background-color: $primary-color;
+  color: $text-light;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($primary-color, $blackness: 10%);
+  }
+}
+
+.secondary {
+  background-color: $secondary-color;
+  color: $text-light;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($secondary-color, $blackness: 10%);
+  }
+}
+
+.accent {
+  background-color: $accent-color;
+  color: $text-light;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($accent-color, $blackness: 10%);
+  }
+}
+
+.cancel-button {
+  background-color: $text-secondary;
+  color: $text-light;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($text-secondary, $blackness: 10%);
+  }
+}

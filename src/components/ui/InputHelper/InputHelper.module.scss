@@ -1,0 +1,7 @@
+@use "@/sass/abstracts" as *;
+
+.helper {
+  font-size: $font-sm;
+  color: $text-muted;
+  margin-top: $margin-xs;
+}

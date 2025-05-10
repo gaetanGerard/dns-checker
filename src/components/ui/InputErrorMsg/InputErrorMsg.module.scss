@@ -1,0 +1,7 @@
+@use "@/sass/abstracts" as *;
+
+.error {
+  font-size: $font-sm;
+  color: $error-color;
+  margin-top: $margin-xs;
+}

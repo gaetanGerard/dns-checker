@@ -1,0 +1,7 @@
+@use "@/sass/abstracts" as *;
+
+.container {
+  margin-bottom: $margin-md;
+  display: flex;
+  flex-direction: column;
+}

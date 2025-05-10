@@ -5,6 +5,12 @@ import { useProfile } from "@/hooks/profile/useProfile";
 import styles from "./ProfilesLayout.module.scss";
 
 import Loading from "@/components/Loading/Loading";
+import Title from "@/components/ui/Title/Title";
+import AddEditProfileForm from "@/components/AddEditProfileForm/AddEditProfileForm";
+
+import data from "@/data/pages/profiles.json";
+import { Profile } from "./ProfilesLayout.types";
+import { isValidDomain } from "@/utils/functions";
 
 const ProfilesLayout = () => {
   const {
@@ -20,16 +26,49 @@ const ProfilesLayout = () => {
   const [name, setName] = useState("");
   const [domain, setDomain] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [editProfile, setEditProfile] = useState<null | {
-    id: number;
-    name: string;
-    domains: string;
-  }>(null);
+  const [editProfile, setEditProfile] = useState<null | Profile>(null);
+  const [touchedFields, setTouchedFields] = useState({
+    name: false,
+    domain: false,
+  });
+
+  const helper = {
+    name: data.form.helper.name,
+    domain: data.form.helper.domain,
+  };
+
+  const errors = {
+    name:
+      touchedFields.name && name.trim().length === 0
+        ? data.form.errors.name
+        : undefined,
+    domain:
+      touchedFields.domain && !isValidDomain(domain)
+        ? data.form.errors.domain
+        : undefined,
+  };
+
+  const isFormValid = name.trim().length > 0 && isValidDomain(domain);
 
   // When Page loads, fetch profiles
   useEffect(() => {
     fetchProfiles();
   }, []);
+
+  // Show form automatically if no profiles after fetch
+  useEffect(() => {
+    if (!loading && profiles.length === 0) {
+      setIsFormVisible(true);
+    }
+  }, [loading, profiles]);
+
+  const resetForm = () => {
+    setName("");
+    setDomain("");
+    setEditProfile(null);
+    setIsFormVisible(false);
+    setTouchedFields({ name: false, domain: false });
+  };
 
   // Add/Edit Submit profile and back to the list
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,13 +76,10 @@ const ProfilesLayout = () => {
     if (name && domain) {
       if (editProfile) {
         updateProfile(editProfile.id, name, [domain]);
-        setEditProfile(null);
       } else {
         addProfile(name, [domain]);
       }
-      setName("");
-      setDomain("");
-      setIsFormVisible(false);
+      resetForm();
     }
   };
 
@@ -55,8 +91,14 @@ const ProfilesLayout = () => {
       setName("");
       setDomain("");
       setEditProfile(null);
+      setTouchedFields({ name: false, domain: false });
       setIsFormVisible(true);
     }
+  };
+
+  // Cancel form
+  const handleCancel = () => {
+    resetForm();
   };
 
   // Delete profile
@@ -65,11 +107,7 @@ const ProfilesLayout = () => {
   };
 
   // Edit button (from the list)
-  const handleEditProfile = (profile: {
-    id: number;
-    name: string;
-    domains: string;
-  }) => {
+  const handleEditProfile = (profile: Profile) => {
     setEditProfile(profile);
     setName(profile.name);
     setDomain(profile.domains);
@@ -84,13 +122,13 @@ const ProfilesLayout = () => {
     setIsFormVisible(true);
   };
 
+  const handleBlur = (field: keyof typeof touchedFields) => {
+    setTouchedFields((prev) => ({ ...prev, [field]: true }));
+  };
+
   /*
    * REFACTORING
    *
-   * 1) components/Loading/Loading component
-   * 2) components/ui/Title/Title component
-   * 3) components/ui/Input/Input component
-   * 4) components/ui/Button/Button component
    * 5) components/ui/Table/Table component
    * 6) components/ui/Table/TableHead/TableHead component
    * 7) components/ui/Table/TableRow/TableRow component
@@ -99,95 +137,27 @@ const ProfilesLayout = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Profiles</h1>
-      {!loading ? (
-        <Loading loadingText="Chargement des profils..." />
+      <Title className="text-center">{data.pageTitle}</Title>
+      {loading ? (
+        <Loading loadingText={data.loadingText} />
       ) : (
         <>
           {isFormVisible ? (
-            <div className={styles.formContainer}>
-              <h2>{editProfile ? "Éditer le profil" : "Ajouter un profil"}</h2>
-              <form onSubmit={handleSubmit} className={styles.form}>
-                <div>
-                  <label htmlFor="profileName">Nom du profil</label>
-                  <input
-                    type="text"
-                    id="profileName"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="profileDomain">Domaine</label>
-                  <input
-                    type="text"
-                    id="profileDomain"
-                    value={domain}
-                    onChange={(e) => setDomain(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className={styles.buttons}>
-                  <button type="submit">
-                    {editProfile ? "Enregistrer" : "Ajouter et terminer"}
-                  </button>
-                  {!editProfile && (
-                    <button type="button" onClick={handleAddAndContinue}>
-                      Ajouter et continuer
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => setIsFormVisible(false)}
-                    disabled={profiles.length === 0}
-                    className={styles.btn}
-                  >
-                    Annuler
-                  </button>
-                </div>
-              </form>
-            </div>
-          ) : profiles.length === 0 ? (
-            <div className={styles.formContainer}>
-              <h2>Ajouter un profil</h2>
-              <form onSubmit={handleSubmit} className={styles.form}>
-                <div>
-                  <label htmlFor="profileName">Nom du profil</label>
-                  <input
-                    type="text"
-                    id="profileName"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="profileDomain">Domaine</label>
-                  <input
-                    type="text"
-                    id="profileDomain"
-                    value={domain}
-                    onChange={(e) => setDomain(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className={styles.buttons}>
-                  <button type="submit">Ajouter et terminer</button>
-                  <button type="button" onClick={handleAddAndContinue}>
-                    Ajouter et continuer
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsFormVisible(false)}
-                    disabled={profiles.length === 0}
-                    className={styles.btn}
-                  >
-                    Annuler
-                  </button>
-                </div>
-              </form>
-            </div>
+            <AddEditProfileForm
+              editProfile={editProfile}
+              name={name}
+              domain={domain}
+              profilesLength={profiles.length}
+              onNameChange={(e) => setName(e.target.value)}
+              onDomainChange={(e) => setDomain(e.target.value)}
+              onSubmit={handleSubmit}
+              onAddAndContinue={handleAddAndContinue}
+              onCancel={handleCancel}
+              helper={helper}
+              errors={errors}
+              onBlur={handleBlur}
+              isFormValid={isFormValid}
+            />
           ) : (
             <div className={styles.profileList}>
               <button className={styles.btn} onClick={handleShowAddForm}>
