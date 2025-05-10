@@ -1,0 +1,42 @@
+{
+  "checkdnslayout": {
+    "flushDnsMsg": {
+      "success": "Cache DNS vidé avec succès",
+      "error": "Erreur lors du flush DNS"
+    },
+    "handleTestMsg": {
+      "error": "Erreur lors du test DNS."
+    }
+  },
+  "checkdnsform": {
+    "title": "Vérifier des DNS",
+    "select": {
+      "label": "Profil :",
+      "options": { "label": "Sélectionner une option" }
+    },
+    "textarea": {
+      "label": "Noms de domaine à tester :",
+      "placeholder": {
+        "selectedProfile": "Entrez un sous-domaine par ligne (ex: admin)",
+        "unselectedProfile": "Entrez un nom de domaine par ligne (ex: sousdomaine.domaine.com)"
+      }
+    },
+    "inputhelper": {
+      "selectedProfile": "Un sous-domaine par ligne. Le domaine principal sera ajouté automatiquement.",
+      "unselectedProfile": "Un nom de domaine par ligne. Ne pas inclure http(s):// ou www."
+    },
+    "testbtn": "Tester"
+  },
+  "testdns": {
+    "title": "Résultats du test DNS",
+    "teststatus": {
+        "progress": "Test en cours...",
+        "success": "est joignable",
+        "error": "est injoignable"
+    },
+    "buttons": {
+      "flushdns": "Vider le cache DNS",
+      "testagain": "Refaire un test"
+    }
+  }
+}

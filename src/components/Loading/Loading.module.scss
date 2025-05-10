@@ -16,7 +16,7 @@
   display: grid;
   border: 4px solid #0000;
   border-radius: 50%;
-  border-color: #ccc #0000;
+  border-color: $input-border-color #0000;
   animation: l16 1s infinite linear;
 }
 .loader::before,

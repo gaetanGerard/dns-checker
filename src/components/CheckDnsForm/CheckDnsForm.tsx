@@ -9,6 +9,7 @@ import Select from "@/components/ui/Select/Select";
 import Textarea from "@/components/ui/Textarea/Textarea";
 import styles from "./CheckDnsForm.module.scss";
 import type { CheckDnsFormProps } from "./CheckDnsForm.types";
+import data from "@/data/pages/checkdns.json";
 
 const CheckDnsForm: React.FC<CheckDnsFormProps> = ({
   profiles,
@@ -19,54 +20,56 @@ const CheckDnsForm: React.FC<CheckDnsFormProps> = ({
   error,
   onTest,
 }) => {
+  const { title, select, textarea, inputhelper, testbtn } = data.checkdnsform;
   return (
     <div className={styles.checkDnsContainer}>
       <Title level={1} className="formTitle">
-        Vérifier des DNS
+        {title}
       </Title>
-      {profiles.length > 0 && (
-        <Select
-          id="profile-select"
-          label="Profil :"
-          value={selectedProfileId ?? ""}
-          options={[
-            { value: "", label: "Sélectionner un profil" },
-            ...profiles.map((profile) => ({
-              value: profile.id,
-              label: profile.name,
-            })),
-          ]}
-          onChange={(val) => onProfileChange(Number(val))}
-        />
-      )}
-      <div style={{ height: "2rem" }} />
-      <Textarea
-        id="domains"
-        label="Noms de domaine à tester :"
-        value={domains}
-        onChange={onDomainsChange}
-        placeholder={
-          selectedProfileId
-            ? "Entrez un sous-domaine par ligne (ex: admin)"
-            : "Entrez un nom de domaine par ligne (ex: admin.gge2705.synology.me)"
-        }
-        rows={6}
-      >
-        <InputHelper>
-          {selectedProfileId
-            ? "Un sous-domaine par ligne. Le domaine principal sera ajouté automatiquement."
-            : "Un nom de domaine par ligne. Ne pas inclure http(s):// ou www."}
-        </InputHelper>
-        {error && <InputErrorMsg>{error}</InputErrorMsg>}
-      </Textarea>
-      <Button
-        type="submit"
-        className="checkDnsBtn"
-        disabled={domains.trim().length === 0}
-        onClick={onTest}
-      >
-        Tester
-      </Button>
+      <div className={styles["form-container"]}>
+        {profiles.length > 0 && (
+          <Select
+            id="profile-select"
+            label={select.label}
+            value={selectedProfileId ?? ""}
+            options={[
+              { value: "", label: select.options.label },
+              ...profiles.map((profile) => ({
+                value: profile.id,
+                label: profile.name,
+              })),
+            ]}
+            onChange={(val) => onProfileChange(Number(val))}
+          />
+        )}
+        <Textarea
+          id="domains"
+          label={textarea.label}
+          value={domains}
+          onChange={onDomainsChange}
+          placeholder={
+            selectedProfileId
+              ? textarea.placeholder.selectedProfile
+              : textarea.placeholder.unselectedProfile
+          }
+          rows={6}
+        >
+          <InputHelper>
+            {selectedProfileId
+              ? inputhelper.selectedProfile
+              : inputhelper.unselectedProfile}
+          </InputHelper>
+          {error && <InputErrorMsg>{error}</InputErrorMsg>}
+        </Textarea>
+        <Button
+          type="submit"
+          className="checkDnsBtn"
+          disabled={domains.trim().length === 0}
+          onClick={onTest}
+        >
+          {testbtn}
+        </Button>
+      </div>
     </div>
   );
 };

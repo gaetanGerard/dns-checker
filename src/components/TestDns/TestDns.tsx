@@ -4,6 +4,7 @@ import Title from "@/components/ui/Title/Title";
 import Button from "@/components/ui/Button/Button";
 import styles from "./TestDns.module.scss";
 import type { TestDnsProps } from "./TestDns.types";
+import data from "@/data/pages/checkdns.json";
 
 const TestDns: React.FC<TestDnsProps> = ({
   results,
@@ -11,7 +12,7 @@ const TestDns: React.FC<TestDnsProps> = ({
   onRetry,
   onFlushDns,
 }) => {
-  // Open external link in default browser (Electron)
+  const { title, teststatus, buttons } = data.testdns;
   const handleDomainClick = (
     url: string,
     e: React.MouseEvent<HTMLAnchorElement>
@@ -34,7 +35,7 @@ const TestDns: React.FC<TestDnsProps> = ({
   return (
     <div className={styles.testDnsContainer}>
       <Title level={1} className="checkDnsTitle">
-        Résultat du test DNS
+        {title}
       </Title>
       <ul className={styles.resultList}>
         {results.map((r) => (
@@ -49,19 +50,19 @@ const TestDns: React.FC<TestDnsProps> = ({
             </a>
             {r.reachable === null ? (
               <span className={styles.loading}>
-                Test en cours...
+                {teststatus.progress}
                 <span className={styles.loader} />
               </span>
             ) : r.reachable ? (
               <span className={styles.success}>
-                est joignable
+                {teststatus.success}
                 <span className={`${styles.icon} ${styles.iconSuccess}`}>
                   <CheckCircle size={18} />
                 </span>
               </span>
             ) : (
               <span className={styles.error}>
-                est injoignable
+                {teststatus.error}
                 <span className={`${styles.icon} ${styles.iconError}`}>
                   <XCircle size={18} />
                 </span>
@@ -76,7 +77,7 @@ const TestDns: React.FC<TestDnsProps> = ({
             onClick={onRetry}
             className={styles.dnsActionBtn + " checkDnsBtn"}
           >
-            Refaire un test
+            {buttons.testagain}
           </Button>
           {hasFailed && onFlushDns && (
             <Button
@@ -84,7 +85,7 @@ const TestDns: React.FC<TestDnsProps> = ({
               variant="secondary"
               className={styles.dnsActionBtn}
             >
-              Vider le cache DNS
+              {buttons.flushdns}
             </Button>
           )}
         </div>

@@ -38,7 +38,7 @@
 .domainLink {
   color: $primary-color;
   text-decoration: underline dotted;
-  font-weight: 500;
+  font-weight: $font-medium;
   transition: color 0.2s;
   &:hover {
     color: $accent-color;
@@ -49,7 +49,7 @@
 .icon {
   display: inline-flex;
   align-items: center;
-  font-size: 1.2em;
+  font-size: $font-pres;
   margin-left: $margin-xs;
 }
 
@@ -83,7 +83,7 @@
 
 .success {
   color: $success-color;
-  font-weight: bold;
+  font-weight: $font-bold;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@
 
 .error {
   color: $error-color;
-  font-weight: bold;
+  font-weight: $font-bold;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -16,6 +16,12 @@
   }
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-lg;
+}
+
 .form {
   display: flex;
   flex-direction: column;
