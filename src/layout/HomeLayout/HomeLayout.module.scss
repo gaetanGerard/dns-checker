@@ -1,1 +1,79 @@
-@use "@/sass/abstracts/index" as *;
+@use "@/sass/abstracts" as *;
+@use "sass:color";
+
+.home {
+  padding: $padding-xl;
+  background-color: $background-light;
+  border-radius: $border-radius-lg;
+  max-width: 900px;
+  margin: $margin-xl auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  text-align: center;
+}
+
+.features {
+  display: flex;
+  gap: $gap-lg;
+  margin: $margin-xl 0;
+
+  .feature {
+    flex: 1;
+    background: white;
+    border-radius: $border-radius-lg;
+    padding: $padding-md;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+    .icon {
+      color: $primary-color;
+      margin-bottom: $margin-sm;
+    }
+
+    .feature-title {
+      margin: $margin-xs 0;
+    }
+
+    .feature-description {
+      color: $text-secondary;
+    }
+  }
+}
+
+.image {
+  text-align: center;
+  margin: $margin-xl 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: $gap-md;
+  margin-bottom: $margin-lg;
+
+  .link {
+    background-color: $primary-color;
+    color: white;
+    padding: $padding-sm $padding-md;
+    border-radius: $border-radius-sm;
+    text-decoration: none;
+    font-weight: $font-bold;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $blackness: 5%);
+    }
+  }
+}
+
+.description {
+  font-size: $font-pres;
+  color: $text-secondary;
+  margin: $margin-md 0 $margin-lg 0;
+  line-height: 1.7;
+}

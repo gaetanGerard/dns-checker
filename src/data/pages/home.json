@@ -1,0 +1,36 @@
+{
+  "title": "Chec DNS",
+  "subtitle": "Un problème de DNS ?",
+  "description": "Vous avez un serveur et vous avez un problème pour accéder à vos services ? alors tester Check DNS !",
+  "features": [
+    {
+      "title": "Profil",
+      "description": "Ajouter un profil pour accélérer régler votre problème encore plus vite.",
+      "lucidIcon": "User"
+    },
+    {
+      "title": "Néttoyage du cache",
+      "description": "Les test ne passe pas ? pas de soucis vous pouvez en un clique néttoyer le cache DNS de windows.",
+      "lucidIcon": "Eraser"
+    },
+    {
+      "title": "Sécurité",
+      "description": "Tout est en local vous n'exposez aucune donnée à l'extérieur.",
+      "lucidIcon": "Shield"
+    }
+  ],
+  "image": {
+    "src": "/assets/images/home.png",
+    "alt": "Image de la page d'accueil"
+  },
+  "links": [
+    {
+      "label": "Ajouter un profil",
+      "href": "/profiles"
+    },
+    {
+      "label": "Tester un DNS",
+      "href": "/check-dns"
+    }
+  ]
+}

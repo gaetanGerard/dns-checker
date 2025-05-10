@@ -45,3 +45,14 @@
 .text-center {
   @include text-align(center);
 }
+
+.title {
+  font-size: $title-xl;
+  margin-bottom: $padding-sm;
+}
+
+.subtitle {
+  font-size: $title-sm;
+  margin-bottom: $padding-xs;
+  color: $primary-color;
+}

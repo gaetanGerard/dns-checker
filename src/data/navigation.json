@@ -6,5 +6,9 @@
   {
     "href": "/profiles",
     "label": "Profiles"
+  },
+  {
+    "href": "/check-dns",
+    "label": "Check DNS"
   }
 ]
