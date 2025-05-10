@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DNS Checker
 
-## Getting Started
+## Présentation du projet
 
-First, run the development server:
+DNS Checker est une application de bureau simple et moderne permettant de vérifier rapidement si un ou plusieurs domaines sont joignables (résolution DNS). L'application permet d'ajouter des profils, de tester plusieurs domaines à la fois, et d'effectuer un flush du cache DNS de Windows directement depuis l'interface. L'accent est mis sur la sécurité : aucune donnée n'est transmise à l'extérieur, et seules les informations de profils sont stockées localement dans une base SQLite.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies utilisées
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js** (App Router)
+- **Electron** (intégration desktop)
+- **React** (UI)
+- **TypeScript** (robustesse et typage)
+- **SCSS** (UI moderne)
+- **SQLite** (stockage local des profils)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Lancer le projet en développement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Cloner le dépôt
+2. Installer les dépendances :
+   ```bash
+   npm install
+   ```
+3. Lancer Electron et NextJS en même temps :
+   ```bash
+   npm run electron
+   ```
 
-## Learn More
+L'application sera accessible dans une fenêtre Electron dédiée.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation du paquet (WIP)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Cette section sera complétée prochainement pour expliquer comment générer et installer le binaire de l'application sur Windows.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Fonctionnalités principales
 
-## Deploy on Vercel
+- Vérification de la joignabilité de domaines (DNS)
+- Ajout/édition de profils de domaines
+- Test de plusieurs domaines en une seule opération
+- Flush du cache DNS Windows en un clic
+- Interface sécurisée : aucune donnée transmise à l'extérieur
+- Stockage local via SQLite
+- Notifications intégrées
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Prochaines évolutions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Sélection du thème (clair/sombre) via l'interface
+- Nettoyage et gestion avancée de la base de données
+- Amélioration de l'UX (feedback, validation, etc.)
+- Support multiplateforme (Linux/Mac)
+- Export/import des profils
+- Et plus encore...
+
+---
