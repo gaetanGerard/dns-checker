@@ -1,0 +1,29 @@
+@use "@/sass/abstracts" as *;
+
+.notification {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 1000;
+  padding: $padding-md $padding-lg;
+  margin: $margin-md auto;
+  width: fit-content;
+  border-radius: $border-radius-md;
+  font-weight: $font-medium;
+  color: $text-light;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  &.success {
+    background-color: $success-color;
+  }
+
+  &.error {
+    background-color: $error-color;
+  }
+
+  &.info {
+    background-color: $info-color;
+  }
+}

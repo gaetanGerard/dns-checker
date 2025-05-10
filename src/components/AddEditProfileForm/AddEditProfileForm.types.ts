@@ -8,7 +8,7 @@ export interface AddEditProfileFormProps {
   onNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onDomainChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
-  onAddAndContinue: (e: React.FormEvent) => void;
+  onAddAndContinue: () => void;
   onCancel: () => void;
   onBlur: (field: "name" | "domain") => void;
   isFormValid: boolean;

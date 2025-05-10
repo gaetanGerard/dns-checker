@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
-import { ProfileProvider } from "@/context/profile/ProfileProvider";
+import { ProfileProvider } from "@/context/profile";
+import { NotificationProvider } from "@/context/notification";
 import Header from "@/components/Header/Header";
+import NotificationPortal from "@/components/Notification/NotificationPortal";
 import "@/sass/styles.scss";
 
 export const metadata: Metadata = {
@@ -19,10 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeWrapper>
-          <ProfileProvider>
-            <Header />
-            <ErrorBoundary>{children}</ErrorBoundary>
-          </ProfileProvider>
+          <NotificationProvider>
+            <ProfileProvider>
+              <Header />
+              <ErrorBoundary>{children}</ErrorBoundary>
+              <NotificationPortal />
+            </ProfileProvider>
+          </NotificationProvider>
         </ThemeWrapper>
       </body>
     </html>

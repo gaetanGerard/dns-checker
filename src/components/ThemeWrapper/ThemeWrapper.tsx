@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "@/context/theme/ThemeProvider";
+import { ThemeProvider } from "@/context/theme";
 import useTheme from "@/hooks/theme/useTheme";
 import { ReactNode, useEffect } from "react";
 

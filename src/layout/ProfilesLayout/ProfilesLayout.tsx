@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { useProfile } from "@/hooks/profile/useProfile";
+import useNotification from "@/hooks/notification/useNotification";
 import styles from "./ProfilesLayout.module.scss";
 
 import Loading from "@/components/Loading/Loading";
 import Title from "@/components/ui/Title/Title";
 import AddEditProfileForm from "@/components/AddEditProfileForm/AddEditProfileForm";
 import ProfileList from "@/components/ProfilesList/ProfilesList";
-import Table from "@/components/Table/Table";
 
 import data from "@/data/pages/profiles.json";
 import { Profile } from "./ProfilesLayout.types";
@@ -23,6 +23,8 @@ const ProfilesLayout = () => {
     fetchProfiles,
     updateProfile,
   } = useProfile();
+
+  const { notify } = useNotification();
 
   // Form states
   const [name, setName] = useState("");
@@ -78,23 +80,25 @@ const ProfilesLayout = () => {
     if (name && domain) {
       if (editProfile) {
         updateProfile(editProfile.id, name, [domain]);
+        notify(`Le profil ${name} a été mis à jour`, "success");
       } else {
         addProfile(name, [domain]);
+        notify("Profil ajouté avec succès", "success");
       }
       resetForm();
     }
   };
 
   // Add Submit profile and continue
-  const handleAddAndContinue = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleAddAndContinue = () => {
     if (name && domain) {
+      notify(`Le profil ${name} a été ajouté avec succès`, "success");
       addProfile(name, [domain]);
       setName("");
       setDomain("");
       setEditProfile(null);
-      setTouchedFields({ name: false, domain: false });
       setIsFormVisible(true);
+      setTouchedFields({ name: false, domain: false });
     }
   };
 
@@ -106,6 +110,7 @@ const ProfilesLayout = () => {
   // Delete profile
   const handleDeleteProfile = (id: number) => {
     deleteProfile(id);
+    notify(`Le profil a été supprimé avec succès`, "success");
   };
 
   // Edit button (from the list)

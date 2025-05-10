@@ -1,24 +1,4 @@
 .container {
+  position: relative;
   padding: 20px;
-}
-
-.profileList {
-  margin-top: 20px;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table,
-.th,
-.td {
-  border: 1px solid #ddd;
-}
-
-.th,
-.td {
-  padding: 8px;
-  text-align: left;
 }
