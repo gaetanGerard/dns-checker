@@ -1,0 +1,17 @@
+@use "@/sass/abstracts" as *;
+
+.textareaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
+}
+
+.textarea {
+  padding: $padding-sm;
+  border-radius: $border-radius-sm;
+  border: 1px solid $input-border-color;
+  font-size: $font-md;
+  background: $background-light;
+  resize: vertical;
+  min-height: 120px;
+}

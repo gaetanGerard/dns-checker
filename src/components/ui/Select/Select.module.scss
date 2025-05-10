@@ -1,0 +1,15 @@
+@use "@/sass/abstracts" as *;
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
+}
+
+.select {
+  padding: $padding-sm;
+  border-radius: $border-radius-sm;
+  border: 1px solid $input-border-color;
+  font-size: $font-md;
+  background: $background-light;
+}

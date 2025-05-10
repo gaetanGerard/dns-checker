@@ -1,0 +1,42 @@
+@use "@/sass/abstracts" as *;
+
+.testDnsContainer {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: $padding-xl;
+  max-width: 600px;
+  margin: $margin-xl auto;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-lg;
+}
+
+.resultList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $margin-lg 0;
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  font-size: $font-md;
+  margin-bottom: $margin-xs;
+}
+
+.success {
+  color: $success-color;
+  font-weight: bold;
+}
+
+.error {
+  color: $error-color;
+  font-weight: bold;
+}
+
+.loading {
+  color: $info-color;
+  font-style: italic;
+}

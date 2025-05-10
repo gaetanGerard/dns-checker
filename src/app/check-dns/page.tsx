@@ -1,5 +1,7 @@
+import CheckDnsLayout from "@/layout/CheckDnsLayout/CheckDnsLayout";
+
 const CheckDNS = () => {
-  return <div>Check DNS</div>;
+  return <CheckDnsLayout />;
 };
 
 export default CheckDNS;
