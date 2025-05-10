@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useProfile } from "@/hooks/profile/useProfile";
+import useNotification from "@/hooks/notification/useNotification";
 import CheckDnsForm from "@/components/CheckDnsForm/CheckDnsForm";
 import TestDns from "@/components/TestDns/TestDns";
 import type { DnsTestResult } from "@/components/TestDns/TestDns.types";
 
 const CheckDnsLayout: React.FC = () => {
   const { profiles } = useProfile();
+  const { notify } = useNotification();
   const [selectedProfileId, setSelectedProfileId] = useState<number | null>(
     null
   );
@@ -26,6 +28,27 @@ const CheckDnsLayout: React.FC = () => {
     });
     const data = await res.json();
     return data.results as DnsTestResult[];
+  }
+
+  async function handleFlushDnsAndRetry(failedDomains: string[]) {
+    try {
+      const res = await fetch("/api/flush-dns", { method: "POST" });
+      const data = await res.json();
+      if (data.success) {
+        notify("Cache DNS vidé avec succès", "success");
+        setLoading(true);
+        setResults(
+          failedDomains.map((domain) => ({ domain, reachable: null }))
+        );
+        const apiResults = await testDomainsWithApi(failedDomains);
+        setResults(apiResults);
+      } else {
+        notify(data.message || "Erreur lors du flush DNS", "error");
+      }
+    } catch (e) {
+      notify("Erreur lors du flush DNS", "error");
+    }
+    setLoading(false);
   }
 
   const handleProfileChange = (id: number) => {
@@ -84,6 +107,7 @@ const CheckDnsLayout: React.FC = () => {
         setResults(null);
         setLoading(false);
       }}
+      onFlushDns={handleFlushDnsAndRetry}
     />
   ) : (
     <CheckDnsForm

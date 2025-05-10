@@ -59,7 +59,12 @@ const CheckDnsForm: React.FC<CheckDnsFormProps> = ({
         </InputHelper>
         {error && <InputErrorMsg>{error}</InputErrorMsg>}
       </Textarea>
-      <Button onClick={onTest} className="checkDnsBtn">
+      <Button
+        type="submit"
+        className="checkDnsBtn"
+        disabled={domains.trim().length === 0}
+        onClick={onTest}
+      >
         Tester
       </Button>
     </div>

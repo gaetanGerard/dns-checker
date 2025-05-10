@@ -1,6 +1,13 @@
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import { app, BrowserWindow, Menu, MenuItem, nativeTheme } from "electron";
+import {
+  app,
+  BrowserWindow,
+  Menu,
+  MenuItem,
+  nativeTheme,
+  shell,
+} from "electron";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -19,6 +26,21 @@ function createWindow() {
   });
 
   win.loadURL("http://localhost:3000");
+
+  // Intercept external links and open in default browser
+  win.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith("http")) {
+      shell.openExternal(url);
+      return { action: "deny" };
+    }
+    return { action: "allow" };
+  });
+  win.webContents.on("will-navigate", (event, url) => {
+    if (url !== win?.webContents.getURL() && url.startsWith("http")) {
+      event.preventDefault();
+      shell.openExternal(url);
+    }
+  });
 
   win.webContents.on("did-finish-load", () => {
     win?.webContents.send("theme-change", isDarkMode ? "dark" : "light");

@@ -5,7 +5,12 @@ import Button from "@/components/ui/Button/Button";
 import styles from "./TestDns.module.scss";
 import type { TestDnsProps } from "./TestDns.types";
 
-const TestDns: React.FC<TestDnsProps> = ({ results, loading, onRetry }) => {
+const TestDns: React.FC<TestDnsProps> = ({
+  results,
+  loading,
+  onRetry,
+  onFlushDns,
+}) => {
   // Open external link in default browser (Electron)
   const handleDomainClick = (
     url: string,
@@ -20,6 +25,11 @@ const TestDns: React.FC<TestDnsProps> = ({ results, loading, onRetry }) => {
       window.open(url, "_blank", "noopener");
     }
   };
+
+  const hasFailed = results.some((r) => r.reachable === false);
+  const failed = results
+    .filter((r) => r.reachable === false)
+    .map((r) => r.domain);
 
   return (
     <div className={styles.testDnsContainer}>
@@ -61,9 +71,23 @@ const TestDns: React.FC<TestDnsProps> = ({ results, loading, onRetry }) => {
         ))}
       </ul>
       {!loading && (
-        <Button onClick={onRetry} className="checkDnsBtn">
-          Refaire un test
-        </Button>
+        <div style={{ display: "flex", gap: 16 }}>
+          <Button
+            onClick={onRetry}
+            className={styles.dnsActionBtn + " checkDnsBtn"}
+          >
+            Refaire un test
+          </Button>
+          {hasFailed && onFlushDns && (
+            <Button
+              onClick={() => onFlushDns(failed)}
+              variant="secondary"
+              className={styles.dnsActionBtn}
+            >
+              Vider le cache DNS
+            </Button>
+          )}
+        </div>
       )}
     </div>
   );
