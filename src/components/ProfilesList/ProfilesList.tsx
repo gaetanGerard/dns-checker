@@ -6,6 +6,8 @@ import styles from "./ProfilesList.module.scss";
 import Table from "@/components/Table/Table";
 import Button from "@/components/ui/Button/Button";
 
+import data from "@/data/pages/profiles.json";
+
 export default function ProfileList({
   profiles,
   onEdit,
@@ -15,7 +17,7 @@ export default function ProfileList({
   return (
     <div className={styles.profileList}>
       <Button onClick={onAdd} className="start">
-        Ajouter un profil
+        {data.profiles.btnAdd}
       </Button>
       <Table profiles={profiles} onEdit={onEdit} onDelete={onDelete} />
     </div>

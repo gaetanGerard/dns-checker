@@ -1,12 +1,17 @@
 import styles from "./TableHead.module.scss";
 
+import data from "@/data/pages/profiles.json";
+
 export default function TableHead() {
+  const { table } = data.profiles;
   return (
     <thead>
       <tr className={styles.tr}>
-        <th className={styles.th}>Nom</th>
-        <th className={styles.th}>Domaine</th>
-        <th className={styles.th}>Actions</th>
+        {table.thead.map((text, i) => (
+          <th className={styles.th} key={i}>
+            {text}
+          </th>
+        ))}
       </tr>
     </thead>
   );

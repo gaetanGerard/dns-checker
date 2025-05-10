@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "edit": ["Le profil", "a été mis à jour"],
+    "add": "Profil ajouté avec succès",
+    "delete": "Le profil a été supprimé avec succès"
+  }
+}

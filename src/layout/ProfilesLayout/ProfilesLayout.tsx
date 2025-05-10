@@ -11,6 +11,7 @@ import AddEditProfileForm from "@/components/AddEditProfileForm/AddEditProfileFo
 import ProfileList from "@/components/ProfilesList/ProfilesList";
 
 import data from "@/data/pages/profiles.json";
+import notificationsData from "@/data/notifications.json";
 import { Profile } from "./ProfilesLayout.types";
 import { isValidDomain } from "@/utils/functions";
 
@@ -80,10 +81,13 @@ const ProfilesLayout = () => {
     if (name && domain) {
       if (editProfile) {
         updateProfile(editProfile.id, name, [domain]);
-        notify(`Le profil ${name} a été mis à jour`, "success");
+        notify(
+          `${notificationsData.profiles.edit[0]} ${name} ${notificationsData.profiles.edit[1]}`,
+          "success"
+        );
       } else {
         addProfile(name, [domain]);
-        notify("Profil ajouté avec succès", "success");
+        notify(notificationsData.profiles.add, "success");
       }
       resetForm();
     }
@@ -92,7 +96,7 @@ const ProfilesLayout = () => {
   // Add Submit profile and continue
   const handleAddAndContinue = () => {
     if (name && domain) {
-      notify(`Le profil ${name} a été ajouté avec succès`, "success");
+      notify(notificationsData.profiles.add, "success");
       addProfile(name, [domain]);
       setName("");
       setDomain("");
@@ -110,7 +114,7 @@ const ProfilesLayout = () => {
   // Delete profile
   const handleDeleteProfile = (id: number) => {
     deleteProfile(id);
-    notify(`Le profil a été supprimé avec succès`, "success");
+    notify(notificationsData.profiles.delete, "success");
   };
 
   // Edit button (from the list)

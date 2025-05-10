@@ -29,5 +29,11 @@
       "continue": "Ajouter et continuer",
       "stop": "Ajouter et terminer"
     }
+  },
+  "profiles": {
+    "btnAdd": "Ajouter un profil",
+    "table": {
+      "thead": ["Nom", "Domaine", "Actions"]
+    }
   }
 }
