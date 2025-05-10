@@ -36,6 +36,11 @@ $error-color: #dc3545;
 $input-border-color: #ccc;
 $input-background-color: #fff;
 
+// Table colors
+$table-th-background: #e5e7eb;
+$table-tr-background: #f9fafb;
+$table-td-border: #e5e5e5;
+
 // Header colors
 $header-dark: color.adjust($background-dark, $blackness: 15%);
 
@@ -68,6 +73,8 @@ $font-extra-bold: 800;
 // Font sizes
 $font-xs: 0.625rem;
 $font-sm: 0.75rem;
+$font-th: 0.875rem;
+$font-table: 0.95rem;
 $font-md: 1rem;
 $font-lg: 1.5rem;
 $font-xl: 2rem;

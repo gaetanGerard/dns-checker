@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import styles from "./Button.module.scss";
 import clsx from "clsx";
@@ -12,6 +10,7 @@ export default function Button({
   variant = "primary",
   className,
   disabled = false,
+  icon,
 }: ButtonProps) {
   return (
     <button
@@ -24,6 +23,7 @@ export default function Button({
         className && styles[className]
       )}
     >
+      {icon && <span className={styles.icon}>{icon}</span>}
       {children}
     </button>
   );

@@ -1,0 +1,17 @@
+@use "@/sass/abstracts" as *;
+
+.tr {
+  &:last-child td {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $table-tr-background;
+  }
+}
+
+.td {
+  padding: $padding-md;
+  text-align: left;
+  border-bottom: 1px solid $table-th-background;
+}

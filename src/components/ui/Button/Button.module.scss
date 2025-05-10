@@ -34,6 +34,24 @@
   }
 }
 
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  color: $text-secondary;
+  padding: 0;
+  border-radius: $border-radius-sm;
+  transition: background 0.3s ease;
+  border-radius: $border-radius-full;
+
+  span {
+    height: 16px;
+  }
+}
+
 .accent {
   background-color: $accent-color;
   color: $text-light;
@@ -50,4 +68,22 @@
   &:hover:not(:disabled) {
     background-color: color.adjust($text-secondary, $blackness: 10%);
   }
+}
+
+.edit-btn {
+  &:hover:not(:disabled) {
+    color: $text-light;
+    background-color: color.adjust($text-secondary, $blackness: 10%);
+  }
+}
+
+.delete-btn {
+  &:hover:not(:disabled) {
+    color: $text-light;
+    background-color: color.adjust($error-color, $blackness: 10%);
+  }
+}
+
+.start {
+  align-self: start;
 }

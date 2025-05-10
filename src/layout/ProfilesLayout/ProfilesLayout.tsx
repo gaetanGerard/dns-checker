@@ -7,6 +7,8 @@ import styles from "./ProfilesLayout.module.scss";
 import Loading from "@/components/Loading/Loading";
 import Title from "@/components/ui/Title/Title";
 import AddEditProfileForm from "@/components/AddEditProfileForm/AddEditProfileForm";
+import ProfileList from "@/components/ProfilesList/ProfilesList";
+import Table from "@/components/Table/Table";
 
 import data from "@/data/pages/profiles.json";
 import { Profile } from "./ProfilesLayout.types";
@@ -126,15 +128,6 @@ const ProfilesLayout = () => {
     setTouchedFields((prev) => ({ ...prev, [field]: true }));
   };
 
-  /*
-   * REFACTORING
-   *
-   * 5) components/ui/Table/Table component
-   * 6) components/ui/Table/TableHead/TableHead component
-   * 7) components/ui/Table/TableRow/TableRow component
-   *
-   */
-
   return (
     <div className={styles.container}>
       <Title className="text-center">{data.pageTitle}</Title>
@@ -159,42 +152,12 @@ const ProfilesLayout = () => {
               isFormValid={isFormValid}
             />
           ) : (
-            <div className={styles.profileList}>
-              <button className={styles.btn} onClick={handleShowAddForm}>
-                Ajouter un profil
-              </button>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th className={styles.th}>Nom</th>
-                    <th className={styles.th}>Domaine</th>
-                    <th className={styles.th}>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {profiles.map((profile) => (
-                    <tr key={profile.id}>
-                      <td className={styles.td}>{profile.name}</td>
-                      <td className={styles.td}>{profile.domains}</td>
-                      <td className={styles.td}>
-                        <button
-                          className={styles.btn}
-                          onClick={() => handleEditProfile(profile)}
-                        >
-                          Editer
-                        </button>
-                        <button
-                          className={styles.btn}
-                          onClick={() => handleDeleteProfile(profile.id)}
-                        >
-                          Supprimer
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <ProfileList
+              profiles={profiles}
+              onEdit={handleEditProfile}
+              onDelete={handleDeleteProfile}
+              onAdd={handleShowAddForm}
+            />
           )}
         </>
       )}

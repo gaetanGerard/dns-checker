@@ -1,0 +1,9 @@
+@use "@/sass/abstracts" as *;
+
+.profileList {
+  margin: $margin-2xl $margin-auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-lg;
+}
