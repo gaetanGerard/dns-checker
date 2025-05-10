@@ -7,11 +7,27 @@
 }
 
 .textarea {
-  padding: $padding-sm;
-  border-radius: $border-radius-sm;
-  border: 1px solid $input-border-color;
+  padding: $padding-md $padding-md $padding-sm $padding-md;
+  border: none;
+  border-radius: $border-radius-sm $border-radius-sm 0 0;
+  background: #fff;
   font-size: $font-md;
-  background: $background-light;
+  box-shadow: 0 2px 0 0 $primary-color;
+  outline: none;
+  transition: box-shadow 0.2s, background 0.2s;
   resize: vertical;
   min-height: 120px;
+  margin-bottom: $margin-md;
+
+  &:focus {
+    box-shadow: 0 2px 0 0 $accent-color;
+    background: #fff;
+  }
+}
+
+.textareaGroup label {
+  font-size: $font-sm;
+  color: $primary-color;
+  margin-bottom: $margin-xs;
+  font-weight: 500;
 }

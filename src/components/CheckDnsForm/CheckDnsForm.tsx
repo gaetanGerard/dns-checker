@@ -21,7 +21,9 @@ const CheckDnsForm: React.FC<CheckDnsFormProps> = ({
 }) => {
   return (
     <div className={styles.checkDnsContainer}>
-      <Title level={1}>Vérifier des DNS</Title>
+      <Title level={1} className="formTitle">
+        Vérifier des DNS
+      </Title>
       {profiles.length > 0 && (
         <Select
           id="profile-select"
@@ -37,6 +39,7 @@ const CheckDnsForm: React.FC<CheckDnsFormProps> = ({
           onChange={(val) => onProfileChange(Number(val))}
         />
       )}
+      <div style={{ height: "2rem" }} />
       <Textarea
         id="domains"
         label="Noms de domaine à tester :"

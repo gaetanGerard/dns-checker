@@ -7,9 +7,26 @@
 }
 
 .select {
-  padding: $padding-sm;
-  border-radius: $border-radius-sm;
-  border: 1px solid $input-border-color;
+  padding: $padding-sm $padding-md;
+  border: none;
+  border-radius: $border-radius-sm $border-radius-sm 0 0;
+  background: #fff;
   font-size: $font-md;
-  background: $background-light;
+  box-shadow: 0 2px 0 0 $primary-color;
+  outline: none;
+  transition: box-shadow 0.2s;
+  appearance: none;
+  margin-bottom: $margin-md;
+
+  &:focus {
+    box-shadow: 0 2px 0 0 $accent-color;
+    background: #fff;
+  }
+}
+
+.selectGroup label {
+  font-size: $font-sm;
+  color: $primary-color;
+  margin-bottom: $margin-xs;
+  font-weight: 500;
 }

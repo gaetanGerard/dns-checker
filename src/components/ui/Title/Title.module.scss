@@ -56,3 +56,12 @@
   margin-bottom: $padding-xs;
   color: $primary-color;
 }
+
+.formTitle,
+.checkDnsTitle {
+  font-size: $title-2xl;
+  font-weight: $font-bold;
+  color: $primary-color;
+  margin-bottom: $margin-lg;
+  text-align: center;
+}

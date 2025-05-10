@@ -1,15 +1,22 @@
 @use "@/sass/abstracts" as *;
+@use "sass:color";
 
 .testDnsContainer {
-  background: white;
-  border-radius: $border-radius-lg;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  padding: $padding-xl;
   max-width: 600px;
-  margin: $margin-xl auto;
+  margin: $margin-2xl $margin-auto;
+  padding: $padding-xl;
+  background-color: $background-light;
+  border: 1px solid color.adjust($primary-color, $lightness: 25%);
+  border-radius: $border-radius-lg;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   gap: $gap-lg;
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .resultList {
@@ -21,22 +28,78 @@
 .resultItem {
   display: flex;
   align-items: center;
-  gap: $gap-md;
+  justify-content: space-between;
+  gap: $gap-lg;
   font-size: $font-md;
-  margin-bottom: $margin-xs;
+  margin-bottom: $margin-md;
+  padding: $padding-sm 0;
+}
+
+.domainLink {
+  color: $primary-color;
+  text-decoration: underline dotted;
+  font-weight: 500;
+  transition: color 0.2s;
+  &:hover {
+    color: $accent-color;
+    text-decoration: underline solid;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.2em;
+  margin-left: $margin-xs;
+}
+
+.iconSuccess {
+  color: $success-color;
+}
+
+.iconError {
+  color: $error-color;
+}
+
+.loader {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid $info-color;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: $margin-xs;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .success {
   color: $success-color;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error {
   color: $error-color;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loading {
   color: $info-color;
   font-style: italic;
+  display: flex;
+  align-items: center;
 }

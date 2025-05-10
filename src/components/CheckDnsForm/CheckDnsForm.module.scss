@@ -1,13 +1,27 @@
 @use "@/sass/abstracts" as *;
+@use "sass:color";
 
 .checkDnsContainer {
-  background: white;
-  border-radius: $border-radius-lg;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  padding: $padding-xl;
   max-width: 600px;
-  margin: $margin-xl auto;
+  margin: $margin-2xl $margin-auto;
+  padding: $padding-xl;
+  background-color: $background-light;
+  border: 1px solid color.adjust($primary-color, $lightness: 25%);
+  border-radius: $border-radius-lg;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.form {
   display: flex;
   flex-direction: column;
-  gap: $gap-lg;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
